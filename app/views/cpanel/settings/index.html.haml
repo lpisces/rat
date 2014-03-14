@@ -1,0 +1,22 @@
+%ul.breadcrumb
+  %li
+    %a{:href => "/cpanel"}= I18n.t('cpanel.title')
+    %span.divider /
+  %li.active= I18n.t("cpanel_settings.title")
+
+
+%table.table.table-condensed.table-bordered.table-hover
+  %tr
+    %th{:style => 'width:120px;'}= I18n.t('cpanel_settings.key')
+    %th= I18n.t('cpanel_settings.value')
+    %th{:style => 'width:120px;'}
+
+  - @cpanel_settings.each do |cpanel_setting|
+    %tr
+      %td= cpanel_setting.key
+      %td= cpanel_setting.value
+      %td
+        = link_to '<i class="icon-pencil"></i>'.html_safe, edit_cpanel_setting_path(cpanel_setting)
+        = link_to '<i class="icon-remove"></i>'.html_safe, cpanel_setting, :method => :delete, :data => { :confirm => I18n.t('common.confirm') }
+
+= link_to I18n.t('common.new'), new_cpanel_setting_path

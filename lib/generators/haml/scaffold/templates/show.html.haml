@@ -1,0 +1,19 @@
+%ul.breadcrumb
+  %li
+    %a{:href => "/cpanel"}= I18n.t('cpanel.title')
+    %span.divider /
+  %li
+    %a{:href => <%= index_helper %>_path}= I18n.t("<%= plural_table_name %>.title")
+    %span.divider /
+  %li.active= I18n.t('common.show')
+
+%table.table.table-condensed.table-bordered.table-hover
+  <% for attribute in attributes -%>
+%tr
+    %th= I18n.t('<%= plural_table_name %>.<%= attribute.name %>')
+    %td= @<%= singular_table_name %>.<%= attribute.name %>
+  <% end -%>
+
+= link_to I18n.t('common.edit'), edit_<%= singular_table_name %>_path(@<%= singular_table_name %>)
+\|
+= link_to I18n.t('common.back'), <%= index_helper %>_path

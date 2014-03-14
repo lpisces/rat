@@ -1,0 +1,12 @@
+.navbar
+  .navbar-inner
+    %a.brand{:href => "/cpanel"}= App.site_name
+    %ul.nav
+      - App.cpanel_nav[:items].each do |i|
+        - if i[:controller] ==  self.controller_name.to_s
+          %li.active
+            %a{:href => i[:link], :style => 'padding:5px;'}= i[:cname]
+        - else
+          %li
+            %a{:href => i[:link], :style => 'padding:5px;'}= i[:cname]
+

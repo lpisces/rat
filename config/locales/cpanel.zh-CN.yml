@@ -1,0 +1,13 @@
+:'zh-CN':
+  home:
+    title: '前台'
+  cpanel:
+    title: '后 台'
+  cpanel_settings:
+    title: '系统设置'
+    key: '名称'
+    value: '值'
+    summary: '简介'
+    submit: '保 存'
+    
+    

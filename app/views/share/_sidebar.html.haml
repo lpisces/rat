@@ -1,0 +1,14 @@
+.sidebar-wrap
+  .head 
+    %a{:href => "/sections"}= I18n.t('sections')
+
+  .sections
+    - Section.where('name != ?', I18n.t('timeline')).order('sort asc').all.each do |s|
+      - if !@section.nil? and s.id == @section.try(:id)
+        %a.active.section{:href => "/section/#{s.name}"}= s.name
+      - else
+        %a.section{:href => "/section/#{s.name}"}= s.name
+
+.ads{:style => 'clear:both;position:fixed;top:380px;margin-left:-130px;'}
+  - unless @ad_home_left_bottom.nil?
+    #ad_home_left_bottom{:style => "overflow:hidden;width:#{@ad_home_left_bottom.try(:width)}px;height:#{@ad_home_left_bottom.try(:height)}px"}= @ad_home_left_bottom.try(:code).html_safe

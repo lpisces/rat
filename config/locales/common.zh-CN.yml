@@ -1,0 +1,13 @@
+:'zh-CN':
+  common:
+    new: '新增'
+    confirm: '你确定吗?'
+    back: '返回'
+    show: '展示'
+    edit: '编辑'
+    upload: '上传'
+    'true': '是'
+    'false': '否'
+  will_paginate:
+    previous_label: '上一页'
+    next_label: '下一页'

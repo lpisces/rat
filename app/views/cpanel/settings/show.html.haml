@@ -1,0 +1,20 @@
+%ul.breadcrumb
+  %li
+    %a{:href => "/cpanel"}= I18n.t('cpanel.title')
+    %span.divider /
+  %li
+    %a{:href => cpanel_settings_path}= I18n.t("cpanel_settings.title")
+    %span.divider /
+  %li.active= I18n.t('common.show')
+
+%table.table.table-condensed.table-bordered.table-hover
+  %tr
+    %th= I18n.t('cpanel_settings.key')
+    %td= @cpanel_setting.key
+  %tr
+    %th= I18n.t('cpanel_settings.value')
+    %td= @cpanel_setting.value
+  
+= link_to I18n.t('common.edit'), edit_cpanel_setting_path(@cpanel_setting)
+\|
+= link_to I18n.t('common.back'), cpanel_settings_path

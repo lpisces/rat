@@ -1,0 +1,22 @@
+.wrapper
+  .logo 
+    %a{:href => '/'}
+      %img{:src => '/logo.png'}
+  .nav
+    /%a.node.active{:href => 'javascript:vold(0)'} 导航
+    /%a.node{:href => 'javascript:vold(0)'} 导航
+    /%a.node{:href => 'javascript:vold(0)'} 导航
+  .search
+    %input{:type => 'text', :name => 'q'}
+    %button{:type => 'submit'}
+      %i.icon-search
+
+  .account
+    - unless user_signed_in?
+      = link_to I18n.t('sign_in.title'), new_user_session_path, :method => :get, :style => 'padding:5px;'
+      = link_to I18n.t('sign_up.title'), new_user_registration_path, :method => :get, :style => 'padding:5px;'
+    - else
+      - if current_user.try(:admin)
+        = link_to I18n.t('cpanel.title'), cpanel_path, :method => :get, :style => 'padding:5px;'
+      = link_to I18n.t('sign_out.title'), destroy_user_session_path, :method => :get, :style => 'padding:5px;'
+      

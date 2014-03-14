@@ -1,0 +1,21 @@
+= form_for(@cpanel_setting, :html => {:class => 'form-horizontal'} ) do |f|
+  - if @cpanel_setting.errors.any?
+    .alert.alert-error
+      %button.close{"data-dismiss" => "alert", :type => "button"} x
+      = I18n.t('errors.messages.not_saved', count: @cpanel_setting.errors.count)
+
+  .control-group{:class => ('error' unless @cpanel_setting.errors[:key].empty?)}
+    = f.label :key, I18n.t('cpanel_settings.key'), :class => 'control-label', :style => 'width:80px'
+    .controls{:style => 'margin-left:100px;'}
+      = f.text_field :key, :autofocus => true
+      %span.help-inline= @cpanel_setting.errors[:key].first unless @cpanel_setting.errors[:key].empty?
+  .control-group{:class => ('error' unless @cpanel_setting.errors[:value].empty?)}
+    = f.label :value, I18n.t('cpanel_settings.value'), :class => 'control-label', :style => 'width:80px'
+    .controls{:style => 'margin-left:100px;'}
+      = f.text_field :value, :autofocus => true
+      %span.help-inline= @cpanel_setting.errors[:value].first unless @cpanel_setting.errors[:value].empty?
+
+
+  .control-group
+    .controls{:style => 'margin-left:100px;'}
+      = f.submit I18n.t('cpanel_settings.submit'), :class => 'btn btn-mini btn-success'

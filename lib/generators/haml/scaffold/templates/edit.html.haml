@@ -1,0 +1,15 @@
+%ul.breadcrumb
+  %li
+    %a{:href => "/cpanel"}= I18n.t('cpanel.title')
+    %span.divider /
+  %li
+    %a{:href => <%= index_helper %>_path}= I18n.t("<%= plural_table_name %>.title")
+    %span.divider /
+  %li.active= I18n.t('common.edit')
+
+
+= render 'form'
+
+= link_to I18n.t('common.show'), @<%= singular_table_name %>
+\|
+= link_to I18n.t('common.back'), <%= index_helper %>_path
