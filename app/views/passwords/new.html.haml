@@ -1,0 +1,13 @@
+%fieldset
+  %legend= I18n.t('forgot_password.title')
+= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => 'form-horizontal'}) do |f| 
+  /= devise_error_messages_for_forgot_password!
+  .control-group{:class => ('error' unless resource.errors[:email].empty?)}
+    = f.label :email , I18n.t('sign_up.email'), :class => 'control-label', :style => 'width:80px'
+    .controls{:style => 'margin-left:100px;'}
+      = f.email_field :email, :autofocus => true
+      %span.help-inline= resource.errors[:email].first unless resource.errors[:email].empty?
+  .control-group
+    .controls{:style => 'margin-left:100px;'}
+      = f.submit I18n.t('forgot_password.submit'), :class => 'btn btn-mini btn-success'
+= render "devise/shared/links"

@@ -1,0 +1,34 @@
+"zh-CN":
+  errors:  
+    messages:  
+      not_found: "not found"  
+      already_confirmed: "was already confirmed"  
+      not_locked: "was not locked"  
+      not_saved: "有 %{count} 个错误发生。"
+
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "请填写电子邮件"
+              taken: "此邮箱已经注册"
+            password:
+              blank: "请输入密码"
+              too_short: "请输入长度大于8位的密码"
+            password_confirmation:
+              confirmation: "请重复输入密码"
+
+  devise:  
+    failure:  
+      unauthenticated: 'You need to sign in or sign up before continuing.'  
+      unconfirmed: 'You have to confirm your account before continuing.'  
+      locked: 'Your account is locked.'  
+      invalid: 'OH NOES! ERROR IN TEH EMAIL!'  
+      invalid_token: 'Invalid authentication token.'  
+      timeout: 'Your session expired, please sign in again to continue.'  
+      inactive: 'Your account was not activated yet.'  
+    sessions:  
+      signed_in: 'Signed in successfully.'  
+      signed_out: 'Signed out successfully.'

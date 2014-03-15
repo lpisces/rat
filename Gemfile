@@ -34,11 +34,13 @@ gem 'sprig', '~> 0.1'
 gem "haml-rails"
 
 #auth
-#gem 'devise'
-#gem 'authlogic'
+gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github', :git => 'git://github.com/intridea/omniauth-github.git'
 gem 'omniauth-identity'
+
+#priv
+gem 'cancancan', '~> 1.7'
 
 #分页
 gem 'will_paginate', '~> 3.0'

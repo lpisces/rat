@@ -1,5 +1,6 @@
 class Cpanel::SettingsController < CpanelController
   before_action :set_cpanel_setting, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
 
   # GET /cpanel/settings
@@ -72,5 +73,7 @@ class Cpanel::SettingsController < CpanelController
     def cpanel_setting_params
       params.require(:cpanel_setting).permit(:key, :value)
     end
+
+    alias_method :resource_params, :cpanel_setting_params
 
 end

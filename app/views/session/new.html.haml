@@ -1,0 +1,33 @@
+%fieldset
+  %legend= I18n.t('sign_in.title')
+= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-horizontal'}) do |f|
+
+
+  /= devise_error_messages_for_sign_in!
+  - unless flash[:alert].nil?
+    .alert.alert-error
+      %button.close{"data-dismiss" => "alert", :type => "button"} &times;
+      = I18n.t('sign_in.failed_msg')
+
+  .control-group{:class => ('error' unless resource.errors[:email].empty?)}
+    = f.label :email , I18n.t('sign_in.email'), :class => 'control-label', :style => 'width:80px'
+    .controls{:style => 'margin-left:100px;'}
+      = f.email_field :email, :autofocus => true
+      %span.help-inline= resource.errors[:email].first unless resource.errors[:email].empty?
+  .control-group{:class => ('error' unless resource.errors[:password].empty?)}
+    = f.label :password, I18n.t('sign_in.password'), :class => 'control-label', :style => 'width:80px'
+    .controls{:style => 'margin-left:100px;'}
+      = f.password_field :password
+      %span.help-inline= resource.errors[:password].first unless resource.errors[:password].empty?
+
+
+  .control-group
+    .controls{:style => 'margin-left:100px;'}
+      - if devise_mapping.rememberable?
+        %label.checkbox
+          = f.check_box :remember_me
+          记住我
+  .control-group
+    .controls{:style => 'margin-left:100px;'}
+      = f.submit I18n.t('sign_in.submit'), :class => 'btn btn-mini btn-success'
+= render "devise/shared/links"
