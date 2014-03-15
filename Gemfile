@@ -3,6 +3,7 @@ source 'http://ruby.taobao.org'
 
 gem 'rails', '4.0.0'
 gem 'sqlite3'
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
 gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass', '~> 2.3.2.0'
