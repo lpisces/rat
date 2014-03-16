@@ -28,8 +28,8 @@ gem 'therubyracer', platforms: :ruby
 gem "rails-settings-cached", "0.3.1"
 
 #初始化
-#gem 'seed-fu', github: 'mbleigh/seed-fu'
-gem 'sprig', '~> 0.1'
+gem 'seed-fu', github: 'mbleigh/seed-fu'
+#gem 'sprig', '~> 0.1'
 
 #模板
 gem "haml-rails"
