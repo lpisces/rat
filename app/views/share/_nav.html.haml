@@ -1,22 +1,26 @@
-.wrapper
-  .logo 
-    %a{:href => '/'}
-      %img{:src => '/logo.png'}
-  .nav
-    /%a.node.active{:href => 'javascript:vold(0)'} 导航
-    /%a.node{:href => 'javascript:vold(0)'} 导航
-    /%a.node{:href => 'javascript:vold(0)'} 导航
-  .search
-    %input{:type => 'text', :name => 'q'}
-    %button{:type => 'submit'}
-      %i.icon-search
+.navbar
+  .navbar-inner
+    %a.brand{:href => "/"}= App.site_name
+    %ul.nav
+      - App.front_nav[:items].each do |i|
+        - if i[:controller] ==  self.controller_name.to_s
+          %li.active
+            %a{:href => i[:link], :style => 'padding:5px;'}= i[:cname]
+        - else
+          %li
+            %a{:href => i[:link], :style => 'padding:5px;'}= i[:cname]
 
-  .account
-    - unless user_signed_in?
-      = link_to I18n.t('sign_in.title'), new_user_session_path, :method => :get, :style => 'padding:5px;'
-      = link_to I18n.t('sign_up.title'), new_user_registration_path, :method => :get, :style => 'padding:5px;'
-    - else
-      - if current_user.try(:admin)
-        = link_to I18n.t('cpanel.title'), cpanel_path, :method => :get, :style => 'padding:5px;'
-      = link_to I18n.t('sign_out.title'), destroy_user_session_path, :method => :get, :style => 'padding:5px;'
-      
+    %ul.nav.pull-right
+      - if user_signed_in?
+        %li.dropdown
+          %a#profile.dropdown-toggle.button.button-mini{"data-target" => "#", "data-toggle" => "dropdown", :role => "button"}= (current_user.email+ "<b class='caret'></b>").html_safe
+          %ul.dropdown-menu{"aria-labelledby" => "dLabel", :role => "menu"}
+            - if user_signed_in?
+              %li{:role => 'presentation'}= link_to I18n.t('profile.title'), profile_path, :method => :get, :style => 'padding:5px;'
+              - if current_user.admin?
+                %li{:role => 'presentation'}= link_to I18n.t('cpanel.title'), cpanel_path, :method => :get, :style => 'padding:5px;'
+              %li.divider{:role => "presentation"}
+              %li{:role => 'presentation'}= link_to I18n.t('sign_out.title'), destroy_user_session_path, :method => :get, :style => 'padding:5px;'
+      - else
+        %li= link_to I18n.t('sign_in.title'), new_user_session_path, :method => :get, :style => 'padding:5px;'
+        %li= link_to I18n.t('sign_up.title'), new_user_registration_path, :method => :get, :style => 'padding:5px;'

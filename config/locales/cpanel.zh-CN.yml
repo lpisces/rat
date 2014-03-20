@@ -1,6 +1,6 @@
 :'zh-CN':
-  home:
-    title: '前台'
+  front:
+    title: '前 台'
   cpanel:
     title: '后 台'
   cpanel_settings:

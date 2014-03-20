@@ -16,3 +16,9 @@ App.cpanel_nav = {
   ]
 }
 
+
+App.front_nav = {
+  :items => [
+  ]
+}
+

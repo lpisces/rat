@@ -1,12 +1,12 @@
-%meta{:'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
+%meta{:'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}/
 %meta{:charset => 'utf-8'}
 %meta{:name => 'viewport', :content => 'width=device-width, initial-scale=1.0'}
-%meta{:name => 'keywords', :content => Setting.find_by_name('keywords').try(:value)}
-%meta{:name => 'description', :content => Setting.find_by_name('description').try(:value)}
-%meta{:name => 'author', :content => Setting.find_by_name('author').try(:value)}
+%meta{:name => 'keywords', :content => App.keywords}
+%meta{:name => 'description', :content => App.description}
+%meta{:name => 'author', :content => App.author}
 %link{:href => "/favicon.ico", :rel => "icon", :type => "image/x-icon"}/
 %link{:href => "/favicon.ico", :rel => "shortcut icon", :type => "image/x-icon"}/
-%title= Setting.find_by_name('title').try(:value) 
-= stylesheet_link_tag "application"
+%title= App.title
+= stylesheet_link_tag "cpanel"
 = csrf_meta_tag
 

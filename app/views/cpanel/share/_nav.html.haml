@@ -1,18 +1,20 @@
 .navbar
   .navbar-inner
-    %a.brand{:href => "/cpanel"}= App.site_name
+    %a.brand{:href => "/"}= App.site_name
     %ul.nav
-      - App.cpanel_nav[:items].each do |i|
-        - if i[:controller] ==  self.controller_name.to_s
-          %li.active
-            %a{:href => i[:link], :style => 'padding:5px;'}= i[:cname]
-        - else
-          %li
-            %a{:href => i[:link], :style => 'padding:5px;'}= i[:cname]
+      - if user_signed_in? and current_user.admin?
+        - App.cpanel_nav[:items].each do |i|
+          - if i[:controller] ==  self.controller_name.to_s
+            %li.active
+              %a{:href => i[:link], :style => 'padding:5px;'}= i[:cname]
+          - else
+            %li
+              %a{:href => i[:link], :style => 'padding:5px;'}= i[:cname]
 
     %ul.nav.pull-right
       - if user_signed_in?
-        %li= link_to I18n.t('frontend.title'), root_path, :method => :get, :style => 'padding:5px;'
+        - if current_user.admin?
+          %li= link_to I18n.t('frontend.title'), root_path, :method => :get, :style => 'padding:5px;'
         %li= link_to I18n.t('sign_out.title'), destroy_user_session_path, :method => :get, :style => 'padding:5px;'
       - else
         %li= link_to I18n.t('sign_in.title'), new_user_session_path, :method => :get, :style => 'padding:5px;'
