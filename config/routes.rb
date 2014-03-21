@@ -17,5 +17,5 @@ Rat::Application.routes.draw do
 
   #profile
   match '/profile', :to => 'profile#info', :via => [:get]
-  match '/profile', :to => 'profile#edit', :via => [:get]
+  match '/profile/change_password', :to => 'profile#change_password', :via => [:get]
 end

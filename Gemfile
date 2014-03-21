@@ -46,3 +46,8 @@ gem 'cancancan', '~> 1.7'
 #分页
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap', '0.2.5'
+
+#upload
+gem 'carrierwave'
+gem 'jquery-fileupload-rails'
+gem 'mini_magick'

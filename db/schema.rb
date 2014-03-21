@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140315092418) do
+ActiveRecord::Schema.define(version: 20140321045408) do
 
   create_table "cpanel_settings", force: true do |t|
     t.string   "key"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20140315092418) do
     t.integer  "t",                      default: 0
     t.string   "provider"
     t.string   "uid"
+    t.string   "nick"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

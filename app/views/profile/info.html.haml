@@ -1,0 +1,22 @@
+%ul.nav.nav-pills
+  %li.active
+    %a{:href => profile_path }= I18n.t('profile.title')
+  %li
+    %a{:href => profile_change_password_path }= I18n.t('profile.change_password')
+
+
+%fieldset
+  %legend= I18n.t('profile.title')
+
+  %form.form-horizontal
+    .control-group
+      %label.control-label{:for => "user[nick]", :style => 'width:80px;'}= I18n.t('profile.nick')
+      .controls{:style => 'margin-left:100px;'}
+        %input#user_nick{:placeholder => I18n.t('profile.nick'), :type => "text", :value => current_user.try('nick')}
+    .control-group
+      %label.control-label{:for => "user[avatar]", :style => 'width:80px;'}= I18n.t('profile.avatar')
+      .controls{:style => 'margin-left:100px;'}
+        %input#user_avatar{:type => "hidden"}
+    .control-group
+      .controls{:style => 'margin-left:100px;'}
+        %button.btn.btn-success.btn-mini{:type => "submit"}= I18n.t('profile.save')
