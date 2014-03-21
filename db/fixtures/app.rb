@@ -12,7 +12,8 @@ App.keyword = ''
 
 App.cpanel_nav = {
   :items => [
-    {:cname => '设置', :controller => 'settings', :link => '/cpanel/settings'}
+    {:cname => '设置', :controller => 'settings', :link => '/cpanel/settings'},
+    {:cname => '附件', :controller => 'attachments', :link => '/cpanel/attachments'}
   ]
 }
 

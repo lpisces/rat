@@ -1,0 +1,22 @@
+%ul.breadcrumb
+  %li
+    %a{:href => "/cpanel"}= I18n.t('cpanel.title')
+    %span.divider /
+  %li.active= I18n.t("cpanel_attachments.title")
+
+
+%table.table.table-condensed.table-bordered.table-hover
+  %tr
+    %th{:style => 'width:240px;'}= I18n.t('cpanel_attachments.name')
+    %th= I18n.t('cpanel_attachments.file')
+    %th
+
+  - @cpanel_attachments.each do |cpanel_attachment|
+    %tr
+      %td= cpanel_attachment.name
+      %td= cpanel_attachment.file
+      %td
+        = link_to '<i class="icon-pencil"></i>'.html_safe, edit_cpanel_attachment_path(cpanel_attachment)
+        = link_to '<i class="icon-remove"></i>'.html_safe, cpanel_attachment, :method => :delete, :data => { :confirm => I18n.t('common.confirm') }
+
+= link_to I18n.t('common.new'), new_cpanel_attachment_path

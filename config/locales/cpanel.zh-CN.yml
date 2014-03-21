@@ -9,5 +9,10 @@
     value: '值'
     summary: '简介'
     submit: '保 存'
+  cpanel_attachments:
+    title: '附件管理'
+    name: '名称'
+    file: '路径'
+    submit: '保 存'
     
     

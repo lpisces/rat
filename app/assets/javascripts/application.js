@@ -12,8 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-fileupload/basic
+//= require bootstrap
+//= require bootstrap.file-input
 //= require turbolinks
-//= require_tree .
+//= require profile
 
 $(document).ready(function(){
   $('.dropdown-toggle').dropdown();

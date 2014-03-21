@@ -1,0 +1,21 @@
+= form_for(@cpanel_attachment, :html => {:class => 'form-horizontal'} ) do |f|
+  - if @cpanel_attachment.errors.any?
+    .alert.alert-error
+      %button.close{"data-dismiss" => "alert", :type => "button"} x
+      = I18n.t('errors.messages.not_saved', count: @cpanel_attachment.errors.count)
+
+  .control-group{:class => ('error' unless @cpanel_attachment.errors[:name].empty?)}
+    = f.label :name, I18n.t('cpanel_attachments.name'), :class => 'control-label', :style => 'width:80px'
+    .controls{:style => 'margin-left:100px;'}
+      = f.text_field :name, :autofocus => true
+      %span.help-inline= @cpanel_attachment.errors[:name].first unless @cpanel_attachment.errors[:name].empty?
+  .control-group{:class => ('error' unless @cpanel_attachment.errors[:file].empty?)}
+    = f.label :file, I18n.t('cpanel_attachments.file'), :class => 'control-label', :style => 'width:80px'
+    .controls{:style => 'margin-left:100px;'}
+      = f.text_field :file, :autofocus => true
+      %span.help-inline= @cpanel_attachment.errors[:file].first unless @cpanel_attachment.errors[:file].empty?
+
+
+  .control-group
+    .controls{:style => 'margin-left:100px;'}
+      = f.submit I18n.t('cpanel_attachments.submit'), :class => 'btn btn-mini btn-success'

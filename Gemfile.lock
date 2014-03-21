@@ -88,6 +88,8 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.0.2)
+    fancy-buttons (1.2.0)
+      compass (>= 0.11)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     font-awesome-sass-rails (3.0.2.2)
@@ -220,6 +222,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   compass-rails (~> 1.1.2)
   devise
+  fancy-buttons
   font-awesome-sass-rails
   haml-rails
   jbuilder (~> 1.2)

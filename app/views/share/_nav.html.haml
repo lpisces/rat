@@ -13,7 +13,7 @@
     %ul.nav.pull-right
       - if user_signed_in?
         %li.dropdown
-          %a#profile.dropdown-toggle.button.button-mini{"data-target" => "#", "data-toggle" => "dropdown", :role => "button"}= (current_user.email+ "<b class='caret'></b>").html_safe
+          %a#profile.dropdown-toggle.button.button-mini{"data-target" => "#", "data-toggle" => "dropdown", :role => "button"}= ((current_user.try(:nick) or current_user.try(:email) or "#{current_user.try(:provider)}_#{current_user.uid}") + "<b class='caret'></b>").html_safe
           %ul.dropdown-menu{"aria-labelledby" => "dLabel", :role => "menu"}
             - if user_signed_in?
               %li{:role => 'presentation'}= link_to I18n.t('profile.title'), profile_path, :method => :get, :style => 'padding:5px;'

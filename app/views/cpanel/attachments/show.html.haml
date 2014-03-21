@@ -1,0 +1,20 @@
+%ul.breadcrumb
+  %li
+    %a{:href => "/cpanel"}= I18n.t('cpanel.title')
+    %span.divider /
+  %li
+    %a{:href => cpanel_attachments_path}= I18n.t("cpanel_attachments.title")
+    %span.divider /
+  %li.active= I18n.t('common.show')
+
+%table.table.table-condensed.table-bordered.table-hover
+  %tr
+    %th= I18n.t('cpanel_attachments.name')
+    %td= @cpanel_attachment.name
+  %tr
+    %th= I18n.t('cpanel_attachments.file')
+    %td= @cpanel_attachment.file
+  
+= link_to I18n.t('common.edit'), edit_cpanel_attachment_path(@cpanel_attachment)
+\|
+= link_to I18n.t('common.back'), cpanel_attachments_path

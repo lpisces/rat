@@ -5,18 +5,33 @@
     %a{:href => profile_change_password_path }= I18n.t('profile.change_password')
 
 
-%fieldset
-  %legend= I18n.t('profile.title')
 
-  %form.form-horizontal
-    .control-group
-      %label.control-label{:for => "user[nick]", :style => 'width:80px;'}= I18n.t('profile.nick')
-      .controls{:style => 'margin-left:100px;'}
-        %input#user_nick{:placeholder => I18n.t('profile.nick'), :type => "text", :value => current_user.try('nick')}
-    .control-group
-      %label.control-label{:for => "user[avatar]", :style => 'width:80px;'}= I18n.t('profile.avatar')
-      .controls{:style => 'margin-left:100px;'}
-        %input#user_avatar{:type => "hidden"}
-    .control-group
-      .controls{:style => 'margin-left:100px;'}
-        %button.btn.btn-success.btn-mini{:type => "submit"}= I18n.t('profile.save')
+%form.form-horizontal{:method => 'POST', :action => profile_update_path}
+
+  - if flash[:notice]
+    .alert.alert-info
+      %button.close{"data-dismiss" => "alert", :type => "button"} x
+      = flash[:notice]
+
+
+  = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+  .control-group
+    %label.control-label{:for => "user_nick", :style => 'width:80px;'}= I18n.t('profile.nick')
+    .controls{:style => 'margin-left:100px;'}
+      %input#user_nick{:placeholder => I18n.t('profile.nick'), :name => 'user[nick]', :type => "text", :value => current_user.try('nick')}
+  .control-group
+    %label.control-label{:for => "user_avatar", :style => 'width:80px;'}= I18n.t('profile.avatar')
+    .controls#user_avatar_ctl{:style => 'margin-left:100px;'}
+      %input#user_avatar{:type => "hidden", :name => 'user[avatar]', :value => current_user.try('avatar')}
+      - if current_user.try('avatar').nil?
+        %img.preview.img-rounded.hide
+      - else
+        %img.preview.img-rounded{:src => current_user.try('avatar')}
+      %input.avatar{:name => 'avatar', :type => "file"}
+  .control-group
+    .controls{:style => 'margin-left:100px;'}
+      %button.btn.btn-success.btn-mini{:type => "submit"}= I18n.t('profile.save')
+
+
+
+

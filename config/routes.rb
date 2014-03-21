@@ -1,5 +1,9 @@
 Rat::Application.routes.draw do
 
+  namespace :cpanel do
+    resources :attachments
+  end
+
   root :to => 'home#index'
 
   #account
@@ -16,6 +20,8 @@ Rat::Application.routes.draw do
   end
 
   #profile
-  match '/profile', :to => 'profile#info', :via => [:get]
-  match '/profile/change_password', :to => 'profile#change_password', :via => [:get]
+  match '/profile', :to => 'profile#info', :via => [:get,]
+  match '/profile/update', :to => 'profile#update', :via => [:post,]
+  match '/profile/change_password', :to => 'profile#change_password', :via => [:get,]
+  match '/profile/avatar', :to => 'profile#avatar', :via => [:get, :post]
 end

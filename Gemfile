@@ -51,3 +51,6 @@ gem 'will_paginate-bootstrap', '0.2.5'
 gem 'carrierwave'
 gem 'jquery-fileupload-rails'
 gem 'mini_magick'
+
+#按钮
+gem "fancy-buttons"
