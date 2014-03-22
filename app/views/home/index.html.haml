@@ -1,2 +1,4 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+- if flash[:notice]
+  .alert.alert-info
+    %button.close{"data-dismiss" => "alert", :type => "button"} x
+    = flash[:notice]

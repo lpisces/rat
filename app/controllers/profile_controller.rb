@@ -6,19 +6,26 @@ class ProfileController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if current_user.update(profile_params)
-        format.html { redirect_to profile_path, notice: I18n.t('profile.update_succeed') }
-        format.json { head :no_content }
-      else
-        format.html { redirect_to profile_path, notice: I18n.t('profile.update_failed') }
-        format.json { head :no_content }
-      end
+    @user = User.find(current_user.id)
+    if @user.update(profile_params)
+      redirect_to profile_path, notice: I18n.t('profile.update_succeed')
+    else
+      redirect_to profile_path, alert: I18n.t('profile.update_failed')
     end
   end
 
-
   def change_password
+    @user = current_user
+  end
+
+  def update_password
+    @user = User.find(current_user.id)
+    if @user.update_with_password(profile_password_params)
+      sign_in @user, :bypass => true
+      redirect_to profile_change_password_path, notice: I18n.t('profile.update_password_succeed')
+    else
+      redirect_to profile_change_password_path, alert: I18n.t('profile.update_password_failed')
+    end
   end
 
   def avatar
@@ -35,6 +42,10 @@ class ProfileController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
       params.require(:user).permit(:avatar, :nick)
+    end
+
+    def profile_password_params
+      params.require(:user).permit(:password, :password_confirmation, :current_password)
     end
 
 end

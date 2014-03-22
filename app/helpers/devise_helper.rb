@@ -25,8 +25,11 @@ module DeviseHelper
     devise_error_messages_customize
   end
 
+  def devise_error_messages!
+    devise_error_messages_customize
+  end
 
-  def devise_error_messages_for_forgot_password!
+  def devise_error_messages_for_edit!
     devise_error_messages_customize
   end
 

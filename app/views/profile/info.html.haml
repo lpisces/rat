@@ -1,4 +1,12 @@
-%ul.nav.nav-pills
+%ul.breadcrumb
+  %li
+    %a{:href => "/"}= I18n.t('front.title')
+    %span.divider /
+  %li.active= I18n.t("profile.title")
+
+
+
+%ul.nav.nav-tabs
   %li.active
     %a{:href => profile_path }= I18n.t('profile.title')
   %li
@@ -7,13 +15,14 @@
 
 
 %form.form-horizontal{:method => 'POST', :action => profile_update_path}
-
   - if flash[:notice]
     .alert.alert-info
       %button.close{"data-dismiss" => "alert", :type => "button"} x
       = flash[:notice]
-
-
+  - if flash[:alert]
+    .alert.alert-error
+      %button.close{"data-dismiss" => "alert", :type => "button"} x
+      = flash[:alert]
   = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
   .control-group
     %label.control-label{:for => "user_nick", :style => 'width:80px;'}= I18n.t('profile.nick')

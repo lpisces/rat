@@ -2,7 +2,6 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   
-
   include RailsSettings::Extend
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:github]
@@ -18,8 +17,8 @@ class User < ActiveRecord::Base
       user.email = "#{auth.uid}@github.com"
       user.settings.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
-      #user.name = auth.info.name   # assuming the user model has a name
-      #user.image = auth.info.image # assuming the user model has an image
+      user.nick = auth.info.name   # assuming the user model has a name
+      user.avatar = auth.info.image # assuming the user model has an image
     end
   end
 
