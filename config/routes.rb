@@ -1,7 +1,8 @@
 Rat::Application.routes.draw do
 
-  namespace :cpanel do
-    resources :attachments
+  require 'sidekiq/web'
+  authenticate :user, lambda { |u| u.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
   end
 
   root :to => 'home#index'
@@ -18,6 +19,7 @@ Rat::Application.routes.draw do
 
   namespace :cpanel do
     resources :settings
+    resources :attachments
   end
 
   #profile
@@ -26,4 +28,7 @@ Rat::Application.routes.draw do
   match '/profile/avatar', :to => 'profile#avatar', :via => [:get, :post]
   match '/profile/change_password', :to => 'profile#change_password', :via => [:get,]
   match '/profile/update_password', :to => 'profile#update_password', :via => [:post,]
+
+
+
 end

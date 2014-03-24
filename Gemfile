@@ -54,3 +54,7 @@ gem 'mini_magick'
 
 #按钮
 gem "fancy-buttons"
+
+#queue
+gem "sidekiq"
+gem 'sinatra', '>= 1.3.0', :require => nil
