@@ -58,3 +58,8 @@ gem "fancy-buttons"
 #queue
 gem "sidekiq"
 gem 'sinatra', '>= 1.3.0', :require => nil
+
+#spider
+gem 'useragents'
+gem 'nokogiri'
+gem 'mechanize'
